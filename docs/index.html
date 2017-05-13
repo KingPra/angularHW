@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+    <head>  
+        <title>Starter pack</title>
+        <link rel="stylesheet" href="style.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js"></script>
+        <script src="https://use.fontawesome.com/42c673eaeb.js"></script>
+        <script src="app.js"></script>
+    </head>
+    <body ng-app="MovieApp">
+        <section ng-controller="ListOfMovieController">
+            <ul>
+                <h2>Movie List: </h2>
+                <input type="text" ng-model="movieName" placeholder="name of movie">
+                <input type="text" ng-model="movieDate" placeholder="release date">
+                <input type="text" ng-model="movieGenre" placeholder="genre">
+                <button ng-click="newMovie()">add movie</button>
+                <li ng-repeat="movie in movies">
+                    <h2>{{ movie.name }}</h2>
+                <p>Release Date: {{ movie.date }}</p>
+                <p>Genre: {{ movie.genre }}</p>
+                <p id="{{ $index }}">Movie Rating: {{ rate }}</p>
+                <button id="{{ $index }}"ng-click="ratingBtn('recommended')"><i class="fa fa-thumbs-up" aria-hidden="true"></i></button>
+                <button ng-click="ratingBtn('not recommended')"><i class="fa fa-thumbs-down" aria-hidden="true"></i></button>
+                <button ng-click="remove($index)"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                </li>
+            </ul>
+        </section>
+    </body>
+</html>
